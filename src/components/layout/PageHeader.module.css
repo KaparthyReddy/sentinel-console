@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  margin-bottom: var(--space-1);
+  font-size: var(--text-xl);
+}
+
+@media (min-width: 40rem) {
+  .title {
+    font-size: var(--text-2xl);
+  }
+}
