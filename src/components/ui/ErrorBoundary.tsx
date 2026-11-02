@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     if (!this.state.hasError) return this.props.children;
 
     return (
-      <div className="container stack" style={undefined}>
+      <div className="container stack">
         <Notice tone="error" title="Something went wrong">
           An unexpected error occurred. Reloading the page usually fixes it.
         </Notice>
