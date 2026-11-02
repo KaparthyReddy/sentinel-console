@@ -1,0 +1,22 @@
+.list {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fields {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.feedback {
+  margin-block: var(--space-3);
+}
+
+.feedback:empty {
+  margin: 0;
+}
