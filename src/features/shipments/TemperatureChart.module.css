@@ -1,0 +1,16 @@
+.chart {
+  width: 100%;
+  min-width: 0;
+}
+
+.details summary {
+  min-height: var(--tap-target);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.details[open] summary {
+  margin-bottom: var(--space-3);
+}
