@@ -1,0 +1,48 @@
+/* Small layout helpers shared across components */
+
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Vertical rhythm between direct children */
+.stack > * + * {
+  margin-top: var(--stack-gap, var(--space-4));
+}
+
+/* Horizontal group that wraps on small screens */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-3));
+}
+
+/* Responsive grid: as many columns as fit, no media queries needed */
+.grid-auto {
+  display: grid;
+  gap: var(--grid-gap, var(--space-4));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min, 16rem)), 1fr));
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+/* Wide content (tables) scrolls inside its own box, never the page */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    padding-inline: var(--space-5);
+  }
+}
