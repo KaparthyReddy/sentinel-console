@@ -1,0 +1,31 @@
+.notice {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid currentColor;
+  border-left-width: 6px;
+  border-radius: var(--radius-md);
+}
+
+.title {
+  margin-bottom: var(--space-1);
+  font-weight: 700;
+}
+
+.info {
+  background: var(--sev-low-bg);
+  color: var(--sev-low-fg);
+}
+
+.success {
+  background: var(--status-ok-bg);
+  color: var(--status-ok-fg);
+}
+
+.warning {
+  background: var(--sev-medium-bg);
+  color: var(--sev-medium-fg);
+}
+
+.error {
+  background: var(--sev-critical-bg);
+  color: var(--sev-critical-fg);
+}
