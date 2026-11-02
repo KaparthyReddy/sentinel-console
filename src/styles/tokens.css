@@ -1,0 +1,124 @@
+/*
+  Design tokens.
+  Colour pairs are chosen for WCAG 2.1 AA contrast (4.5:1 for text).
+  Breakpoints (media queries cannot use custom properties):
+    sm: 40rem (640px)   md: 64rem (1024px)
+*/
+:root {
+  color-scheme: light dark;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Shape */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Layout */
+  --sidebar-width: 15rem;
+  --header-height: 3.5rem;
+  --content-max-width: 80rem;
+  --tap-target: 2.75rem;
+
+  /* Light theme */
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-text: #1b2430;
+  --color-text-muted: #4a5568;
+  --color-border: #d5dbe3;
+  --color-border-strong: #8793a3;
+
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1e40af;
+  --color-on-primary: #ffffff;
+  --color-link: #1d4ed8;
+  --color-focus: #1d4ed8;
+
+  --color-danger: #b91c1c;
+  --color-danger-hover: #991b1b;
+  --color-on-danger: #ffffff;
+
+  /* Severity / status pairs: background + foreground */
+  --sev-critical-bg: #fde8e8;
+  --sev-critical-fg: #9b1c1c;
+  --sev-high-bg: #ffedd5;
+  --sev-high-fg: #9a3412;
+  --sev-medium-bg: #fef3c7;
+  --sev-medium-fg: #854d0e;
+  --sev-low-bg: #dbeafe;
+  --sev-low-fg: #1e40af;
+  --status-ok-bg: #dcfce7;
+  --status-ok-fg: #166534;
+  --status-neutral-bg: #e5e9ef;
+  --status-neutral-fg: #2d3748;
+
+  /* Chart colours */
+  --chart-line: #1d4ed8;
+  --chart-grid: #d5dbe3;
+  --chart-axis: #4a5568;
+  --chart-threshold: #b91c1c;
+
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 8%);
+  --shadow-md: 0 4px 12px rgb(16 24 40 / 12%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1720;
+    --color-surface: #18222e;
+    --color-surface-raised: #1f2c3a;
+    --color-text: #e6ebf2;
+    --color-text-muted: #a9b4c3;
+    --color-border: #2c3a4a;
+    --color-border-strong: #7a8798;
+
+    --color-primary: #8ab4ff;
+    --color-primary-hover: #a9c7ff;
+    --color-on-primary: #0b1220;
+    --color-link: #8ab4ff;
+    --color-focus: #8ab4ff;
+
+    --color-danger: #f87171;
+    --color-danger-hover: #fca5a5;
+    --color-on-danger: #0b1220;
+
+    --sev-critical-bg: #4a1d1d;
+    --sev-critical-fg: #fecaca;
+    --sev-high-bg: #4a2a12;
+    --sev-high-fg: #fed7aa;
+    --sev-medium-bg: #4a3a0c;
+    --sev-medium-fg: #fde68a;
+    --sev-low-bg: #14305f;
+    --sev-low-fg: #bfdbfe;
+    --status-ok-bg: #14381f;
+    --status-ok-fg: #bbf7d0;
+    --status-neutral-bg: #2c3a4a;
+    --status-neutral-fg: #e2e8f0;
+
+    --chart-line: #8ab4ff;
+    --chart-grid: #2c3a4a;
+    --chart-axis: #a9b4c3;
+    --chart-threshold: #f87171;
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+    --shadow-md: 0 4px 12px rgb(0 0 0 / 50%);
+  }
+}
