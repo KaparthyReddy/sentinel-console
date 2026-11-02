@@ -1,0 +1,44 @@
+.badge {
+  display: inline-block;
+  padding: 0.125rem var(--space-2);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.outlined {
+  border-color: currentColor;
+}
+
+.critical {
+  background: var(--sev-critical-bg);
+  color: var(--sev-critical-fg);
+}
+
+.high {
+  background: var(--sev-high-bg);
+  color: var(--sev-high-fg);
+}
+
+.medium {
+  background: var(--sev-medium-bg);
+  color: var(--sev-medium-fg);
+}
+
+.low {
+  background: var(--sev-low-bg);
+  color: var(--sev-low-fg);
+}
+
+.ok {
+  background: var(--status-ok-bg);
+  color: var(--status-ok-fg);
+}
+
+.neutral {
+  background: var(--status-neutral-bg);
+  color: var(--status-neutral-fg);
+}
