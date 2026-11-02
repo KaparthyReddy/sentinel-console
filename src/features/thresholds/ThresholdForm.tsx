@@ -67,7 +67,7 @@ export function ThresholdForm({ threshold }: { threshold: ProductThreshold }) {
         <div className={styles.fields}>
           <TextField
             ref={minRef}
-            label="Minimum (\u00b0C)"
+            label={'Minimum (\u00b0C)'}
             type="text"
             inputMode="decimal"
             autoComplete="off"
@@ -77,7 +77,7 @@ export function ThresholdForm({ threshold }: { threshold: ProductThreshold }) {
           />
           <TextField
             ref={maxRef}
-            label="Maximum (\u00b0C)"
+            label={'Maximum (\u00b0C)'}
             type="text"
             inputMode="decimal"
             autoComplete="off"
