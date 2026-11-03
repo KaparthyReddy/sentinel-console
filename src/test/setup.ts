@@ -15,8 +15,24 @@ if (!('ResizeObserver' in globalThis)) {
   globalThis.ResizeObserver = ResizeObserverStub as unknown as typeof ResizeObserver;
 }
 
-// Any request without a matching handler fails the test instead of hitting the network.
-beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+const realFetch = globalThis.fetch;
+
+beforeAll(() => {
+  // Any request without a matching handler fails the test instead of hitting the network.
+  server.listen({ onUnhandledRequest: 'error' });
+
+  // Safety net: Node's fetch can reject jsdom's AbortSignal with
+  // "Expected signal to be an instance of AbortSignal". Drop the signal in tests.
+  const interceptedFetch = globalThis.fetch;
+  globalThis.fetch = ((input: RequestInfo | URL, init?: RequestInit) => {
+    if (init?.signal) {
+      const rest: RequestInit = { ...init };
+      delete rest.signal;
+      return interceptedFetch(input, rest);
+    }
+    return interceptedFetch(input, init);
+  }) as typeof fetch;
+});
 
 afterEach(() => {
   cleanup();
@@ -25,4 +41,7 @@ afterEach(() => {
   clearAccessToken();
 });
 
-afterAll(() => server.close());
+afterAll(() => {
+  server.close();
+  globalThis.fetch = realFetch;
+});
