@@ -32,8 +32,10 @@ export function SummaryCards() {
         {items.map((item) => (
           <div key={item.label} className={cx(styles.card, item.attention && styles.attention)}>
             <dt className={styles.label}>{item.label}</dt>
-            <dd className={styles.value}>{item.value}</dd>
-            {item.attention && <p className={styles.note}>Needs attention</p>}
+            <dd className={styles.value}>
+              {item.value}
+              {item.attention && <span className={styles.note}>Needs attention</span>}
+            </dd>
           </div>
         ))}
       </dl>
