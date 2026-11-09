@@ -90,7 +90,9 @@ describe('AlertsView', () => {
 
   it('recovers from a load error with Try again', async () => {
     server.use(
-      http.get('*/api/alerts', () => HttpResponse.json({ message: 'Server down' }, { status: 500 })),
+      http.get('*/api/alerts', () =>
+        HttpResponse.json({ message: 'Server down' }, { status: 500 }),
+      ),
     );
     const user = userEvent.setup();
     renderWithProviders(<AlertsView />, { user: OPERATOR });

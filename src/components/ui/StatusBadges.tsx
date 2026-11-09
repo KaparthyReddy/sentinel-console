@@ -1,9 +1,5 @@
 import type { AlertStatus, Severity, ShipmentStatus } from '@/api/types';
-import {
-  ALERT_STATUS_LABEL,
-  SEVERITY_LABEL,
-  SHIPMENT_STATUS_LABEL,
-} from '@/utils/severity';
+import { ALERT_STATUS_LABEL, SEVERITY_LABEL, SHIPMENT_STATUS_LABEL } from '@/utils/severity';
 import { Badge, type BadgeTone } from './Badge';
 
 const SEVERITY_TONE: Record<Severity, BadgeTone> = {

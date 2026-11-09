@@ -56,7 +56,11 @@ const columns: Column<Shipment>[] = [
   },
 ];
 
-export function ShipmentsTable({ shipments, busy = false, caption = 'Shipments' }: ShipmentsTableProps) {
+export function ShipmentsTable({
+  shipments,
+  busy = false,
+  caption = 'Shipments',
+}: ShipmentsTableProps) {
   return (
     <DataTable
       caption={caption}

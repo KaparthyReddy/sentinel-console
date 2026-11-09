@@ -37,7 +37,10 @@ export function fetchSummary(signal?: AbortSignal): Promise<DashboardSummary> {
   return apiRequest<DashboardSummary>(endpoints.summary, { signal });
 }
 
-export function fetchShipments(query: ShipmentQuery, signal?: AbortSignal): Promise<Paged<Shipment>> {
+export function fetchShipments(
+  query: ShipmentQuery,
+  signal?: AbortSignal,
+): Promise<Paged<Shipment>> {
   return apiRequest<Paged<Shipment>>(endpoints.shipments, {
     query: {
       page: query.page,

@@ -3,12 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { ProductThreshold } from '@/api/types';
 import { getDb } from '@/mocks/data';
 import { server } from '@/mocks/server';
-import {
-  expectNoAxeViolations,
-  renderWithProviders,
-  screen,
-  userEvent,
-} from '@/test/test-utils';
+import { expectNoAxeViolations, renderWithProviders, screen, userEvent } from '@/test/test-utils';
 import { ThresholdForm } from './ThresholdForm';
 
 const threshold: ProductThreshold = { id: 'thr-01', product: 'Insulin', minTempC: 2, maxTempC: 8 };
@@ -78,7 +73,9 @@ describe('ThresholdForm', () => {
 
   it('shows the server message when saving fails', async () => {
     server.use(
-      http.put('*/api/thresholds/:id', () => HttpResponse.json({ message: 'Boom' }, { status: 500 })),
+      http.put('*/api/thresholds/:id', () =>
+        HttpResponse.json({ message: 'Boom' }, { status: 500 }),
+      ),
     );
     const { user, save } = setup();
     await user.click(save);

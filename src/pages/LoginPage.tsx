@@ -76,7 +76,9 @@ export function LoginPage() {
     <main id="main-content" className={styles.page}>
       <div className={styles.card}>
         <h1 className={styles.title}>Sign in to Sentinel Console</h1>
-        <p className="text-muted">Monitor cold-chain shipments and respond to temperature alerts.</p>
+        <p className="text-muted">
+          Monitor cold-chain shipments and respond to temperature alerts.
+        </p>
 
         <form noValidate className="stack" onSubmit={handleSubmit}>
           {formError && <Notice tone="error">{formError}</Notice>}

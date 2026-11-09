@@ -15,10 +15,7 @@ export function AtRiskShipments() {
   });
 
   return (
-    <Card
-      title="Shipments at risk"
-      actions={<Link to="/shipments">View all shipments</Link>}
-    >
+    <Card title="Shipments at risk" actions={<Link to="/shipments">View all shipments</Link>}>
       {isPending && <Spinner block label="Loading shipments at risk" />}
       {isError && (
         <ErrorState

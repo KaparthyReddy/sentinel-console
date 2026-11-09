@@ -170,7 +170,9 @@ function createDb(): MockDb {
     for (let j = 0; j < i % 3; j += 1) {
       const above = rng() > 0.25;
       const overshoot = round1(0.5 + rng() * 6.5);
-      const temperatureC = above ? round1(product.max + overshoot) : round1(product.min - overshoot);
+      const temperatureC = above
+        ? round1(product.max + overshoot)
+        : round1(product.min - overshoot);
       const delta = excursionDelta(temperatureC, product.min, product.max);
       const resolved = rng() > 0.4;
       const createdMs = now - (2 + rng() * 68) * HOUR;

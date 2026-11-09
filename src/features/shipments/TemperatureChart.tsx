@@ -21,7 +21,11 @@ interface TemperatureChartProps {
   maxC: number;
 }
 
-const clock = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+const clock = new Intl.DateTimeFormat('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+});
 
 const tableColumns = (minC: number, maxC: number): Column<TemperatureReading>[] => [
   {
@@ -45,7 +49,12 @@ const tableColumns = (minC: number, maxC: number): Column<TemperatureReading>[] 
 
 export function TemperatureChart({ readings, minC, maxC }: TemperatureChartProps) {
   if (readings.length === 0) {
-    return <EmptyState title="No readings yet" description="Readings will appear once the sensor reports." />;
+    return (
+      <EmptyState
+        title="No readings yet"
+        description="Readings will appear once the sensor reports."
+      />
+    );
   }
 
   const data = readings.map((reading) => ({
@@ -103,13 +112,23 @@ export function TemperatureChart({ readings, minC, maxC }: TemperatureChartProps
               y={maxC}
               stroke="var(--chart-threshold)"
               strokeDasharray="6 4"
-              label={{ value: `Max ${maxC} \u00b0C`, position: 'insideTopRight', fill: 'var(--chart-threshold)', fontSize: 12 }}
+              label={{
+                value: `Max ${maxC} \u00b0C`,
+                position: 'insideTopRight',
+                fill: 'var(--chart-threshold)',
+                fontSize: 12,
+              }}
             />
             <ReferenceLine
               y={minC}
               stroke="var(--chart-threshold)"
               strokeDasharray="6 4"
-              label={{ value: `Min ${minC} \u00b0C`, position: 'insideBottomRight', fill: 'var(--chart-threshold)', fontSize: 12 }}
+              label={{
+                value: `Min ${minC} \u00b0C`,
+                position: 'insideBottomRight',
+                fill: 'var(--chart-threshold)',
+                fontSize: 12,
+              }}
             />
             <Line
               type="monotone"

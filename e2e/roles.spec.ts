@@ -15,7 +15,10 @@ test.describe('role-based access', () => {
     await signIn(page, 'operator');
     await goTo(page, 'Alerts');
 
-    await page.getByRole('button', { name: /^Acknowledge alert for/ }).first().click();
+    await page
+      .getByRole('button', { name: /^Acknowledge alert for/ })
+      .first()
+      .click();
     await expect(page.getByText(/^Alert for CC-\d{4}-\d{4} acknowledged\.$/)).toBeVisible();
   });
 

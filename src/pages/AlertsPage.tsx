@@ -4,7 +4,10 @@ import { AlertsView } from '@/features/alerts/AlertsView';
 export function AlertsPage() {
   return (
     <>
-      <PageHeader title="Alerts" description="Review temperature excursions and act on open alerts." />
+      <PageHeader
+        title="Alerts"
+        description="Review temperature excursions and act on open alerts."
+      />
       <AlertsView />
     </>
   );

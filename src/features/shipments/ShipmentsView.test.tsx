@@ -52,7 +52,9 @@ describe('ShipmentsView', () => {
     await screen.findByRole('table', { name: 'Shipments' });
 
     await user.type(screen.getByLabelText('Search'), 'zzzz');
-    expect(await screen.findByText('No shipments match your search.', {}, SLOW)).toBeInTheDocument();
+    expect(
+      await screen.findByText('No shipments match your search.', {}, SLOW),
+    ).toBeInTheDocument();
   });
 
   it('has no accessibility violations once loaded', async () => {

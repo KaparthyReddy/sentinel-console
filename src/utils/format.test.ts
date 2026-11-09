@@ -50,7 +50,9 @@ describe('formatRelativeTime', () => {
   });
 
   it('describes future times', () => {
-    expect(formatRelativeTime(new Date(NOW + 10 * 60_000).toISOString(), NOW)).toBe('in 10 minutes');
+    expect(formatRelativeTime(new Date(NOW + 10 * 60_000).toISOString(), NOW)).toBe(
+      'in 10 minutes',
+    );
   });
 
   it('returns an em dash for an invalid date', () => {

@@ -13,5 +13,7 @@ interface BadgeProps {
 
 /** Always contains text, so meaning never depends on colour alone. */
 export function Badge({ tone, outlined = false, children }: BadgeProps) {
-  return <span className={cx(styles.badge, styles[tone], outlined && styles.outlined)}>{children}</span>;
+  return (
+    <span className={cx(styles.badge, styles[tone], outlined && styles.outlined)}>{children}</span>
+  );
 }

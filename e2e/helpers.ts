@@ -26,7 +26,10 @@ export async function goTo(page: Page, label: string): Promise<void> {
   if (await menuButton.isVisible()) {
     await menuButton.click();
   }
-  await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: label }).click();
+  await page
+    .getByRole('navigation', { name: 'Primary' })
+    .getByRole('link', { name: label })
+    .click();
 }
 
 /** Waits until every loading spinner has gone. */

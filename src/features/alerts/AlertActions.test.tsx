@@ -6,16 +6,24 @@ import { AlertActions } from './AlertActions';
 
 describe('AlertActions', () => {
   it('offers Acknowledge and Resolve for an open alert', () => {
-    render(<AlertActions alert={makeAlert({ status: 'OPEN' })} pending={false} onAction={vi.fn()} />);
+    render(
+      <AlertActions alert={makeAlert({ status: 'OPEN' })} pending={false} onAction={vi.fn()} />,
+    );
     expect(
       screen.getByRole('button', { name: 'Acknowledge alert for CC-2026-0001' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Resolve alert for CC-2026-0001' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Resolve alert for CC-2026-0001' }),
+    ).toBeInTheDocument();
   });
 
   it('offers only Resolve for an acknowledged alert', () => {
     render(
-      <AlertActions alert={makeAlert({ status: 'ACKNOWLEDGED' })} pending={false} onAction={vi.fn()} />,
+      <AlertActions
+        alert={makeAlert({ status: 'ACKNOWLEDGED' })}
+        pending={false}
+        onAction={vi.fn()}
+      />,
     );
     expect(screen.queryByRole('button', { name: /^Acknowledge/ })).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^Resolve/ })).toBeInTheDocument();

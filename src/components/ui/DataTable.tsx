@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- scrollable tables must be keyboard-focusable so keyboard users can scroll them */
 import type { ReactNode } from 'react';
 import { cx } from '@/utils/cx';
 import styles from './DataTable.module.css';
@@ -32,14 +33,22 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   return (
     // A scrollable region must be reachable by keyboard, hence tabIndex={0}.
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    <div className={cx(styles.scroll, busy && styles.busy)} role="region" aria-label={caption} tabIndex={0}>
+    <div
+      className={cx(styles.scroll, busy && styles.busy)}
+      role="region"
+      aria-label={caption}
+      tabIndex={0}
+    >
       <table className={styles.table} aria-busy={busy || undefined}>
         <caption className="visually-hidden">{caption}</caption>
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.key} scope="col" className={cx(column.align === 'right' && styles.right)}>
+              <th
+                key={column.key}
+                scope="col"
+                className={cx(column.align === 'right' && styles.right)}
+              >
                 {column.header}
               </th>
             ))}

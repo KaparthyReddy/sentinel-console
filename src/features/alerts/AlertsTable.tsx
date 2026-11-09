@@ -31,8 +31,16 @@ export function AlertsTable({
       rowHeader: true,
       render: (alert) => <Link to={`/shipments/${alert.shipmentId}`}>{alert.shipmentRef}</Link>,
     },
-    { key: 'severity', header: 'Severity', render: (alert) => <SeverityBadge severity={alert.severity} /> },
-    { key: 'status', header: 'Status', render: (alert) => <AlertStatusBadge status={alert.status} /> },
+    {
+      key: 'severity',
+      header: 'Severity',
+      render: (alert) => <SeverityBadge severity={alert.severity} />,
+    },
+    {
+      key: 'status',
+      header: 'Status',
+      render: (alert) => <AlertStatusBadge status={alert.status} />,
+    },
     { key: 'details', header: 'Details', render: (alert) => alert.message },
     {
       key: 'raised',

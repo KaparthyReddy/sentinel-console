@@ -35,7 +35,11 @@ export function AppShell() {
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <Header menuId={menuId} menuOpen={menuOpen} onToggleMenu={() => setMenuOpen((open) => !open)} />
+      <Header
+        menuId={menuId}
+        menuOpen={menuOpen}
+        onToggleMenu={() => setMenuOpen((open) => !open)}
+      />
       <div className={styles.body}>
         <Sidebar id={menuId} open={menuOpen} />
         <main id="main-content" ref={mainRef} tabIndex={-1} className={styles.main}>

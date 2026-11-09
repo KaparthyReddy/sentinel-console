@@ -1,9 +1,4 @@
-import {
-  SEVERITIES,
-  type AlertStatus,
-  type Severity,
-  type ShipmentStatus,
-} from '@/api/types';
+import { SEVERITIES, type AlertStatus, type Severity, type ShipmentStatus } from '@/api/types';
 
 export { SEVERITIES };
 

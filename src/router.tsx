@@ -16,7 +16,9 @@ const ShipmentsPage = lazy(() =>
 const ShipmentDetailPage = lazy(() =>
   import('@/pages/ShipmentDetailPage').then((m) => ({ default: m.ShipmentDetailPage })),
 );
-const AlertsPage = lazy(() => import('@/pages/AlertsPage').then((m) => ({ default: m.AlertsPage })));
+const AlertsPage = lazy(() =>
+  import('@/pages/AlertsPage').then((m) => ({ default: m.AlertsPage })),
+);
 const ThresholdsPage = lazy(() =>
   import('@/pages/ThresholdsPage').then((m) => ({ default: m.ThresholdsPage })),
 );
@@ -40,7 +42,9 @@ export const routes: RouteObject[] = [
       { path: 'alerts', element: page(<AlertsPage />) },
       {
         path: 'thresholds',
-        element: <ProtectedRoute permission="thresholds:view">{page(<ThresholdsPage />)}</ProtectedRoute>,
+        element: (
+          <ProtectedRoute permission="thresholds:view">{page(<ThresholdsPage />)}</ProtectedRoute>
+        ),
       },
       { path: 'forbidden', element: <ForbiddenPage /> },
       { path: '*', element: <NotFoundPage /> },

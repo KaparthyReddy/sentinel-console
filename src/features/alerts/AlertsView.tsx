@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { useAlertAction, useAlerts } from '@/api/hooks';
-import { ALERT_STATUSES, SEVERITIES, type AlertAction, type AlertStatus, type Severity } from '@/api/types';
+import {
+  ALERT_STATUSES,
+  SEVERITIES,
+  type AlertAction,
+  type AlertStatus,
+  type Severity,
+} from '@/api/types';
 import { can } from '@/auth/permissions';
 import { useAuth } from '@/auth/useAuth';
 import { ErrorState } from '@/components/ui/ErrorState';
@@ -58,7 +64,10 @@ export function AlertsView() {
             message: `Alert for ${alert.shipmentRef} ${action === 'acknowledge' ? 'acknowledged' : 'resolved'}.`,
           }),
         onError: (error) =>
-          setFeedback({ tone: 'error', message: errorMessage(error, 'Could not update the alert.') }),
+          setFeedback({
+            tone: 'error',
+            message: errorMessage(error, 'Could not update the alert.'),
+          }),
       },
     );
   };

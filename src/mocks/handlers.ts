@@ -143,7 +143,10 @@ export const handlers = [
 
     if (action === 'acknowledge') {
       if (alert.status !== 'OPEN') {
-        return HttpResponse.json({ message: 'Only open alerts can be acknowledged.' }, { status: 409 });
+        return HttpResponse.json(
+          { message: 'Only open alerts can be acknowledged.' },
+          { status: 409 },
+        );
       }
       alert.status = 'ACKNOWLEDGED';
       alert.acknowledgedBy = role.toLowerCase();

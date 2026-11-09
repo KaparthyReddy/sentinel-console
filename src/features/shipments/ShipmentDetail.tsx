@@ -78,7 +78,9 @@ export function ShipmentDetail({ id }: ShipmentDetailProps) {
           <div>
             <dt>Last reading</dt>
             <dd>
-              <time dateTime={shipment.lastReadingAt}>{formatDateTime(shipment.lastReadingAt)}</time>
+              <time dateTime={shipment.lastReadingAt}>
+                {formatDateTime(shipment.lastReadingAt)}
+              </time>
             </dd>
           </div>
         </dl>

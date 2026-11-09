@@ -19,18 +19,18 @@ A real-time, accessible operations dashboard for cold-chain temperature monitori
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| UI | React 18, TypeScript (strict), React Router |
-| Server state | TanStack Query |
-| Charts | Recharts |
-| Styling | Plain CSS with design tokens and CSS Modules (no UI library) |
-| Mock API | Mock Service Worker (MSW) plus a simulated WebSocket |
-| Unit and component tests | Vitest, React Testing Library, vitest-axe |
-| End-to-end and accessibility tests | Playwright, axe-core |
-| Components | Storybook |
-| Quality | ESLint (with jsx-a11y), Prettier |
-| CI and hosting | GitHub Actions, Azure Static Web Apps |
+| Area                               | Choice                                                       |
+| ---------------------------------- | ------------------------------------------------------------ |
+| UI                                 | React 18, TypeScript (strict), React Router                  |
+| Server state                       | TanStack Query                                               |
+| Charts                             | Recharts                                                     |
+| Styling                            | Plain CSS with design tokens and CSS Modules (no UI library) |
+| Mock API                           | Mock Service Worker (MSW) plus a simulated WebSocket         |
+| Unit and component tests           | Vitest, React Testing Library, vitest-axe                    |
+| End-to-end and accessibility tests | Playwright, axe-core                                         |
+| Components                         | Storybook                                                    |
+| Quality                            | ESLint (with jsx-a11y), Prettier                             |
+| CI and hosting                     | GitHub Actions, Azure Static Web Apps                        |
 
 ## Architecture
 
@@ -60,24 +60,24 @@ npm run dev
 
 Open http://localhost:5173 and sign in with a demo account:
 
-| Role | Username | Password | Can do |
-| --- | --- | --- | --- |
-| Admin | `admin` | `admin123` | Everything, including editing thresholds |
+| Role     | Username   | Password      | Can do                                    |
+| -------- | ---------- | ------------- | ----------------------------------------- |
+| Admin    | `admin`    | `admin123`    | Everything, including editing thresholds  |
 | Operator | `operator` | `operator123` | View data, acknowledge and resolve alerts |
-| Viewer | `viewer` | `viewer123` | Read-only |
+| Viewer   | `viewer`   | `viewer123`   | Read-only                                 |
 
 These are fake credentials for the mock API only.
 
 ## Scripts
 
-| Command | What it does |
-| --- | --- |
-| `npm run dev` | Start the dev server |
-| `npm run build` / `npm run preview` | Type-check, build, and serve the build |
-| `npm test` / `npm run test:coverage` | Unit and component tests |
-| `npm run e2e` | Browser tests (desktop and mobile) plus accessibility scans |
-| `npm run storybook` | Component explorer on port 6006 |
-| `npm run lint` / `npm run typecheck` / `npm run format:check` | Static checks |
+| Command                                                       | What it does                                                |
+| ------------------------------------------------------------- | ----------------------------------------------------------- |
+| `npm run dev`                                                 | Start the dev server                                        |
+| `npm run build` / `npm run preview`                           | Type-check, build, and serve the build                      |
+| `npm test` / `npm run test:coverage`                          | Unit and component tests                                    |
+| `npm run e2e`                                                 | Browser tests (desktop and mobile) plus accessibility scans |
+| `npm run storybook`                                           | Component explorer on port 6006                             |
+| `npm run lint` / `npm run typecheck` / `npm run format:check` | Static checks                                               |
 
 ## Testing
 
@@ -112,15 +112,15 @@ Automated tools find only part of the accessibility problems. Keyboard and scree
 2. Allow the app's origin in the API's CORS configuration.
 3. Make the API match `src/api/endpoints.ts` and `src/api/types.ts`, or adjust those files.
 
-| Endpoint | Returns |
-| --- | --- |
-| `POST /api/auth/login` | `{ token, username, role }` |
-| `GET /api/dashboard/summary` | `{ activeShipments, shipmentsAtRisk, openAlerts, criticalAlerts }` |
-| `GET /api/shipments?page&pageSize&search&status` | `{ items, total, page, pageSize }` |
-| `GET /api/shipments/:id` and `/readings` | a shipment, and its `[{ timestamp, temperatureC }]` |
-| `GET /api/alerts?page&pageSize&severity&status` | `{ items, total, page, pageSize }` |
-| `POST /api/alerts/:id/acknowledge` or `/resolve` | the updated alert |
-| `GET /api/thresholds` and `PUT /api/thresholds/:id` | product temperature ranges |
+| Endpoint                                            | Returns                                                            |
+| --------------------------------------------------- | ------------------------------------------------------------------ |
+| `POST /api/auth/login`                              | `{ token, username, role }`                                        |
+| `GET /api/dashboard/summary`                        | `{ activeShipments, shipmentsAtRisk, openAlerts, criticalAlerts }` |
+| `GET /api/shipments?page&pageSize&search&status`    | `{ items, total, page, pageSize }`                                 |
+| `GET /api/shipments/:id` and `/readings`            | a shipment, and its `[{ timestamp, temperatureC }]`                |
+| `GET /api/alerts?page&pageSize&severity&status`     | `{ items, total, page, pageSize }`                                 |
+| `POST /api/alerts/:id/acknowledge` or `/resolve`    | the updated alert                                                  |
+| `GET /api/thresholds` and `PUT /api/thresholds/:id` | product temperature ranges                                         |
 
 The WebSocket should send each new alert as JSON, either bare or wrapped as `{ "type": "alert", "alert": { ... } }`. If the API returns Spring Data's `Page` shape (`content`, `totalElements`), map it to `Paged<T>` in `src/api/services.ts`.
 

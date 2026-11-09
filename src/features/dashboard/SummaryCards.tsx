@@ -21,7 +21,11 @@ export function SummaryCards() {
 
   const items = [
     { label: 'Active shipments', value: data.activeShipments, attention: false },
-    { label: 'Shipments at risk', value: data.shipmentsAtRisk, attention: data.shipmentsAtRisk > 0 },
+    {
+      label: 'Shipments at risk',
+      value: data.shipmentsAtRisk,
+      attention: data.shipmentsAtRisk > 0,
+    },
     { label: 'Open alerts', value: data.openAlerts, attention: data.openAlerts > 0 },
     { label: 'Critical alerts', value: data.criticalAlerts, attention: data.criticalAlerts > 0 },
   ];

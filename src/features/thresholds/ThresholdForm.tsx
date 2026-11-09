@@ -56,14 +56,21 @@ export function ThresholdForm({ threshold }: { threshold: ProductThreshold }) {
         onSuccess: () =>
           setFeedback({ tone: 'success', message: `${threshold.product} thresholds saved.` }),
         onError: (error) =>
-          setFeedback({ tone: 'error', message: errorMessage(error, 'Could not save the thresholds.') }),
+          setFeedback({
+            tone: 'error',
+            message: errorMessage(error, 'Could not save the thresholds.'),
+          }),
       },
     );
   }
 
   return (
     <Card title={threshold.product}>
-      <form noValidate aria-label={`${threshold.product} temperature thresholds`} onSubmit={handleSubmit}>
+      <form
+        noValidate
+        aria-label={`${threshold.product} temperature thresholds`}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.fields}>
           <TextField
             ref={minRef}
@@ -86,7 +93,10 @@ export function ThresholdForm({ threshold }: { threshold: ProductThreshold }) {
             onChange={(event) => update('maxTempC', event.target.value)}
           />
         </div>
-        <p className="text-muted" style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)' }}>
+        <p
+          className="text-muted"
+          style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)' }}
+        >
           Allowed values: {MIN_ALLOWED_C} to {MAX_ALLOWED_C} {'\u00b0C'}
         </p>
 

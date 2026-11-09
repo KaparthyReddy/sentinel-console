@@ -32,7 +32,9 @@ test.describe('dashboard and shipments', () => {
       .click();
 
     await expect(page.getByRole('heading', { level: 1, name: /^CC-2026-/ })).toBeVisible();
-    await expect(page.getByRole('img', { name: /Line chart of 48 temperature readings/ })).toBeVisible();
+    await expect(
+      page.getByRole('img', { name: /Line chart of 48 temperature readings/ }),
+    ).toBeVisible();
 
     await page.getByText('View the latest readings as a table').click();
     await expect(page.getByRole('table', { name: /Temperature readings/ })).toBeVisible();
