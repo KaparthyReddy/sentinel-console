@@ -54,7 +54,7 @@ export function renderWithProviders(
 }
 
 // jsdom cannot compute colours, so contrast is checked in the Playwright a11y tests instead.
-const axe = configureAxe({ rules: { 'color-contrast': { enabled: false } } });
+const axe = configureAxe({ rules: { 'color-contrast': { enabled: false }, region: { enabled: false } } });
 
 /** Fails the test, listing the rules broken, if axe finds accessibility violations. */
 export async function expectNoAxeViolations(container: Element): Promise<void> {

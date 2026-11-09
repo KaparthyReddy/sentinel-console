@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
@@ -29,6 +29,10 @@ async function signIn(user: ReturnType<typeof userEvent.setup>, name: string, pa
   await user.click(screen.getByRole('button', { name: 'Sign in' }));
 }
 
+// jsdom applies the stylesheet that hides the sidebar on small screens, so the
+// nav links are "hidden" to it. `hidden: true` includes them in the queries.
+const thresholdsLink = () => screen.queryByRole('link', { name: 'Thresholds', hidden: true });
+
 describe('app routing', () => {
   it('sends a signed-out visitor to the login page', async () => {
     const { router } = renderApp('/alerts');
@@ -57,13 +61,12 @@ describe('app routing', () => {
     ).toBeInTheDocument();
   });
 
-  it('shows the Thresholds link to admins only', async () => {
-    const admin = renderApp('/');
-    await signIn(admin.user, 'admin', 'admin123');
+  it('shows the Thresholds link to admins', async () => {
+    const { user } = renderApp('/');
+    await signIn(user, 'admin', 'admin123');
     await screen.findByRole('heading', { level: 1, name: 'Dashboard' }, SLOW);
-    // hidden: true because jsdom ignores the media queries that show the sidebar on desktop
-    const nav = screen.getByRole('navigation', { name: 'Primary', hidden: true });
-    expect(within(nav).getByRole('link', { name: 'Thresholds', hidden: true })).toBeInTheDocument();
+
+    expect(thresholdsLink()).toBeInTheDocument();
   });
 
   it('hides the Thresholds link from operators', async () => {
@@ -71,10 +74,7 @@ describe('app routing', () => {
     await signIn(user, 'operator', 'operator123');
     await screen.findByRole('heading', { level: 1, name: 'Dashboard' }, SLOW);
 
-    const nav = screen.getByRole('navigation', { name: 'Primary', hidden: true });
-    expect(
-      within(nav).queryByRole('link', { name: 'Thresholds', hidden: true }),
-    ).not.toBeInTheDocument();
+    expect(thresholdsLink()).not.toBeInTheDocument();
   });
 
   it('blocks an operator who asks for the admin-only page', async () => {
